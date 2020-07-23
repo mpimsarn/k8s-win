@@ -25,8 +25,10 @@ add-apt-repository \
 
 apt-get update
 apt-get install -y \
-    docker-ce=$DOCKER_VERSION \
-    docker-ce-cli=$DOCKER_VERSION \
+    # docker-ce=$DOCKER_VERSION \
+    # docker-ce-cli=$DOCKER_VERSION \
+    docker-ce \
+    docker-ce-cli \    
     containerd.io
 
 # install Kubeadm etc.
@@ -37,9 +39,12 @@ deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 apt-get update
 apt-get install -y \
-    kubelet=$KUBERNETES_VERSION \
-    kubeadm=$KUBERNETES_VERSION \
-    kubectl=$KUBERNETES_VERSION
+    # kubelet=$KUBERNETES_VERSION \
+    # kubeadm=$KUBERNETES_VERSION \
+    # kubectl=$KUBERNETES_VERSION
+    kubelet \
+    kubeadm \
+    kubectl
 
 # set iptables for Flannel
 sysctl net.bridge.bridge-nf-call-iptables=1

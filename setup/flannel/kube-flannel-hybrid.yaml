@@ -2,7 +2,7 @@
 
 # amended for Windows support via - https://docs.microsoft.com/en-us/virtualization/windowscontainers/kubernetes/network-topologies#flannel-in-vxlan-mode
 ---
-apiVersion: extensions/v1beta1
+apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
   name: psp.flannel.unprivileged
