@@ -144,6 +144,9 @@ metadata:
     tier: node
     app: flannel
 spec:
+  selector:
+  matchLabels:
+    name: kube-flannel-ds-amd64
   template:
     metadata:
       labels:
