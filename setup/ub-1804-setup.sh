@@ -45,4 +45,6 @@ apt-get install -y \
     kubectl=$KUBERNETES_VERSION
 
 # set iptables for Flannel
-sysctl net.bridge.bridge-nf-call-iptables=1
+sysctl net/bridge/bridge-nf-call-ip6tables = 1
+sysctl net/bridge/bridge-nf-call-iptables = 1
+sysctl net/bridge/bridge-nf-call-arptables = 1
