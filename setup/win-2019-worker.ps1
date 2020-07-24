@@ -27,7 +27,7 @@ $ClusterCIDR="10.244.0.0/16"
 $KubeDnsServiceIP="10.96.0.10"
 $ServiceCIDR="10.96.0.0/12"
 $InterfaceName="Ethernet"
-$LogDir="C:\k`logs"
+$LogDir="C:\k\logs"
 
 $BaseDir = "c:\k"
 $NetworkMode = $NetworkMode.ToLower()
