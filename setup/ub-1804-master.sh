@@ -1,14 +1,11 @@
 #!/bin/bash
 
-# POD_NETWORK_CIDR="10.244.0.0/16"
+POD_NETWORK_CIDR="10.244.0.0/16"
 SERVICE_CIDR="10.96.0.0/12"
-
-POD_NETWORK_CIDR="192.168.0.0/16"
 
 # initialise Kube
 
-#kubeadm init --pod-network-cidr=$POD_NETWORK_CIDR --service-cidr=$SERVICE_CIDR
-kubeadm init --pod-network-cidr=$POD_NETWORK_CIDR 
+kubeadm init --pod-network-cidr=$POD_NETWORK_CIDR --service-cidr=$SERVICE_CIDR
 
 # install Flannel pod network
 #ipwget https://raw.githubusercontent.com/mpimsarn/k8s-win/master/setup/flannel/kube-flannel-hybrid.yaml
