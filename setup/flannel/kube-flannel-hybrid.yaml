@@ -152,6 +152,7 @@ spec:
       labels:
         tier: node
         app: flannel
+        name: kube-flannel-ds-amd64
     spec:
       hostNetwork: true
       nodeSelector:
@@ -236,6 +237,7 @@ spec:
       labels:
         tier: node
         app: flannel
+        name: kube-flannel-ds-arm64 
     spec:
       hostNetwork: true
       nodeSelector:
@@ -320,6 +322,7 @@ spec:
       labels:
         tier: node
         app: flannel
+        name: kube-flannel-ds-arm 
     spec:
       hostNetwork: true
       nodeSelector:
@@ -404,6 +407,7 @@ spec:
       labels:
         tier: node
         app: flannel
+        name: kube-flannel-ds-ppc64le  
     spec:
       hostNetwork: true
       nodeSelector:
@@ -488,6 +492,7 @@ spec:
       labels:
         tier: node
         app: flannel
+        name: kube-flannel-ds-s390x  
     spec:
       hostNetwork: true
       nodeSelector:
