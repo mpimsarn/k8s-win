@@ -1,7 +1,10 @@
 #!/bin/bash
 
-DOCKER_VERSION="5:19.03.0~3-0~ubuntu-bionic"
-KUBERNETES_VERSION="1.15.1-00"
+# DOCKER_VERSION="5:19.03.0~3-0~ubuntu-bionic"
+# KUBERNETES_VERSION="1.15.1-00"
+
+DOCKER_VERSION="19.03.12"
+KUBERNETES_VERSION="1.18.6"
 
 # turn off swap - for the Kubelet
 swapoff -a 
@@ -25,10 +28,8 @@ add-apt-repository \
 
 apt-get update
 apt-get install -y \
-    # docker-ce=$DOCKER_VERSION \
-    # docker-ce-cli=$DOCKER_VERSION \
-    docker-ce \
-    docker-ce-cli \    
+    docker-ce=$DOCKER_VERSION \
+    docker-ce-cli=$DOCKER_VERSION \
     containerd.io
 
 # install Kubeadm etc.
@@ -39,12 +40,9 @@ deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 apt-get update
 apt-get install -y \
-    # kubelet=$KUBERNETES_VERSION \
-    # kubeadm=$KUBERNETES_VERSION \
-    # kubectl=$KUBERNETES_VERSION
-    kubelet \
-    kubeadm \
-    kubectl
+    kubelet=$KUBERNETES_VERSION \
+    kubeadm=$KUBERNETES_VERSION \
+    kubectl=$KUBERNETES_VERSION
 
 # set iptables for Flannel
 sysctl net.bridge.bridge-nf-call-iptables=1
