@@ -145,8 +145,8 @@ metadata:
     app: flannel
 spec:
   selector:
-  matchLabels:
-    name: kube-flannel-ds-amd64
+    matchLabels:
+      name: kube-flannel-ds-amd64
   template:
     metadata:
       labels:
