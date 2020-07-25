@@ -11,6 +11,6 @@ kubeadm init --pod-network-cidr=$POD_NETWORK_CIDR --service-cidr=$SERVICE_CIDR
 # wget https://raw.githubusercontent.com/mpimsarn/k8s-win/master/setup/flannel/kube-flannel-hybrid.yaml
 # kubectl --kubeconfig='/etc/kubernetes/admin.conf' apply -f kube-flannel-hybrid.yaml
 
-wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+wget https://raw.githubusercontent.com/mpimsarn/k8s-win/setup/flannel/master/Documentation/kube-flannel.yml
 
 kubectl --kubeconfig='/etc/kubernetes/admin.conf' apply -f kube-flannel.yml
