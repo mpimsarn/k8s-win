@@ -21,10 +21,10 @@ apt-get install -y \
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
-# add-apt-repository \
-#    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-#    $(lsb_release -cs) \
-#    stable"
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
 
 apt-get update
 apt-get install -y \
@@ -34,20 +34,16 @@ apt-get install -y \
 
 # install Kubeadm etc.
 # Note - Bionic packages not available yet
-# curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-# cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
-# deb https://apt.kubernetes.io/ kubernetes-xenial main
-# EOF
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
 
 apt-get update
 apt-get install -y \
-    # kubelet=$KUBERNETES_VERSION \
-    # kubeadm=$KUBERNETES_VERSION \
-    # kubectl=$KUBERNETES_VERSION
-
-    kubelet \
-    kubeadm \
-    kubectl    
+    kubelet=$KUBERNETES_VERSION \
+    kubeadm=$KUBERNETES_VERSION \
+    kubectl=$KUBERNETES_VERSION
 
 # set iptables for Flannel
 sysctl net/bridge/bridge-nf-call-ip6tables = 1
