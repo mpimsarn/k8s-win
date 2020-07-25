@@ -84,18 +84,18 @@ containerd config default > /etc/containerd/config.toml
 systemctl restart containerd
 
 
-# # install Kubeadm etc.
-# # Note - Bionic packages not available yet
-# curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-# cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
-# deb https://apt.kubernetes.io/ kubernetes-xenial main
-# EOF
+# install Kubeadm etc.
+# Note - Bionic packages not available yet
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
 
-# apt-get update
-# apt-get install -y \
-#     kubelet=$KUBERNETES_VERSION \
-#     kubeadm=$KUBERNETES_VERSION \
-#     kubectl=$KUBERNETES_VERSION
+apt-get update
+apt-get install -y \
+    kubelet=$KUBERNETES_VERSION \
+    kubeadm=$KUBERNETES_VERSION \
+    kubectl=$KUBERNETES_VERSION
 
 # # set iptables for Flannel
 # sysctl net/bridge/bridge-nf-call-ip6tables = 1
