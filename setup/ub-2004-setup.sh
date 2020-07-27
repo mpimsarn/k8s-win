@@ -68,7 +68,7 @@ sysctl --system
 # (Install containerd)
 ## Set up the repository
 ### Install packages to allow apt to use a repository over HTTPS
-apt-get update && apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+apt-get update && apt-get install -y apt-transport-https ca-certificates curl software-properties-common net-tools 
 
 ## Add Docker’s official GPG key
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
