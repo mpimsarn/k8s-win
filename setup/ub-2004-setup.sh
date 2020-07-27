@@ -101,3 +101,7 @@ apt-get install -y \
 # sysctl net/bridge/bridge-nf-call-ip6tables = 1
 # sysctl net/bridge/bridge-nf-call-iptables = 1
 # sysctl net/bridge/bridge-nf-call-arptables = 1
+
+echo "blacklist floppy" | sudo tee /etc/modprobe.d/blacklist-floppy.conf
+sudo rmmod floppy
+sudo dpkg-reconfigure initramfs-tools
