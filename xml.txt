@@ -1,0 +1,46 @@
+sing System;
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
+using System.Xml;
+using System.Xml.Schema;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string xmlFilePath = @"path\to\your\file.xml";
+        string xsdFilePath = @"path\to\your\schema.xsd";
+        string connectionString = "your_connection_string";
+
+        DataSet dataSet = new DataSet();
+
+        // Load and validate XML with XSD
+        dataSet.ReadXmlSchema(xsdFilePath);
+        dataSet.ReadXml(xmlFilePath);
+
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+
+            foreach (DataTable table in dataSet.Tables)
+            {
+                using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connection))
+                {
+                    bulkCopy.DestinationTableName = table.TableName;
+
+                    try
+                    {
+                        bulkCopy.WriteToServer(table);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error importing table {table.TableName}: {ex.Message}");
+                    }
+                }
+            }
+        }
+
+        Console.WriteLine("Import completed.");
+    }
+}
